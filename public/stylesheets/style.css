@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: smoke !important;
 }
 
 a {
@@ -9,15 +10,17 @@ a {
 
 
 .search_results img{
-  height: 90%;
-  padding: 2%;
+  height: 200px;
+  padding: 15px;
 }
 
 .search_results{
-  width: 80%;
+  width: 50%;
   margin-bottom: 10px;
   margin-top: 10px;
-  border: 5px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  background-color: none;
+  line-height: 200px;
 }
 
 .search_results *{
@@ -25,7 +28,7 @@ a {
 }
 
 .search_results button{
-  float: right;
+  text-align: center;
   margin-top: auto;
 }
 
@@ -42,6 +45,10 @@ a {
   text-align: right;
 }
 
-.select-btn{
-  margin: 5px;
+.site-title{
+  margin-bottom: 20px;
+}
+
+.div-btn{
+  float: right;
 }

@@ -17,7 +17,6 @@ indexController.controller('indexCtrl', function($scope, $http){
 
   $scope.search_movies = function(query, storage, searchs){
     $http.get(searchs.link1 + query + '&' + searchs.api_key).success(function(result){
-      console.log(result);
       if(storage.last){
         result.results = result.results.filter(function(movie){ return movie.id !== searchs.search1.result.id; });
       }
@@ -27,7 +26,6 @@ indexController.controller('indexCtrl', function($scope, $http){
 
   $scope.search_single = function(info, storage, searchs){
     $http.get(searchs.link2 + info.id + '/credits?' + searchs.api_key).success(function(result){
-      console.log(result);
       result.title = info.title;
       result.id = info.id;
       storage.result = result;
