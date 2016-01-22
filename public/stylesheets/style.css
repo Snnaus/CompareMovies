@@ -52,3 +52,23 @@ a {
 .div-btn{
   float: right;
 }
+
+.resume *{
+    text-indent: 5em;
+}
+
+.resume p{
+    text-indent: 10em;
+}
+
+.result-header *{
+    display: inline-block;
+}
+
+.result-header button{
+    float: right;
+}
+
+.result-header{
+    border-bottom: 2px solid lightgrey;
+}

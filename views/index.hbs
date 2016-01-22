@@ -5,8 +5,8 @@
     <div class=''>
       <div class='' ng-hide='searchs.search1.done'>
         <div class='row'>
-          <span class='col-lg-3'></span>
-          <form class='col-lg-6 center-block' ng-submit='search_movies(searchs.search1.query, searchs.search1, searchs)'>
+          <span class='col-lg-3 col-md-3 col-sm-3 col-xs-3'></span>
+          <form class='col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block' ng-submit='search_movies(searchs.search1.query, searchs.search1, searchs)'>
             <div class='input-group'>
               <input type=text class='form-control' placeholder="Search for the first movie" ng-model='searchs.search1.query'>
               <span class='input-group-btn'><input type='submit' class='btn btn-primary'>Search</input></span>
@@ -16,13 +16,13 @@
         </div>
         <div>
           <div ng-repeat='movie in searchs.search1.result' class='search_results center-block row'>
-            <div class='col-lg-4'>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
               <img ng-src='https://image.tmdb.org/t/p/w185{[movie.poster_path]}' onerror="this.style.display='none';">
             </div>
-            <div class='col-lg-6'>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
               <h3>{[movie.title]} ({[movie.release_date.substring(0,4)]})</h3>
             </div>
-            <div class='col-lg-1'>
+            <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1'>
               <button class='btn btn-primary select-btn' ng-click='search_single({ id: movie.id, title: movie.title }, searchs.search1, searchs)'>Select</button>
             </div>
           </div>
@@ -32,8 +32,8 @@
 
       <div class='' ng-show="searchs.search1.done && !searchs.search2.done">
         <div class='row'>
-          <span class='col-lg-3'></span>
-          <form class='col-lg-6 center-block' ng-submit='search_movies(searchs.search2.query, searchs.search2, searchs)'>
+          <span class='col-lg-3 col-md-3 col-sm-3 col-xs-3'></span>
+          <form class='col-lg-6 col-md-6 col-sm-6 col-xs-6 center-block' ng-submit='search_movies(searchs.search2.query, searchs.search2, searchs)'>
             <div class='input-group'>
               <input type=text class='form-control' placeholder="Search for the second movie" ng-model='searchs.search2.query'>
               <span class='input-group-btn'><input type='submit' class='btn btn-primary'>Search</input></span>
@@ -42,36 +42,40 @@
           </form>
         </div>
         <div class='row'>
-          <span class='col-lg-3'></span>
-            <h5 class='prev_search col-lg-6'>The first movie selected was: {[searchs.search1.result.title]} <button ng-click='resetSearchs()' class='btn btn-warning'>Change Selection</button></h5>
+          <span class='col-lg-3 col-md-3 col-sm-3 col-xs-3'></span>
+            <h5 class='prev_search col-lg-6 col-md-6 col-sm-6 col-xs-6'>The first movie selected was: {[searchs.search1.result.title]} <button ng-click='resetSearchs()' class='btn btn-warning'>Change Selection</button></h5>
         </div>
         <div>
           <div ng-repeat='movie in searchs.search2.result' class='search_results center-block row'>
-            <div class='col-lg-4'>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
               <img ng-src='https://image.tmdb.org/t/p/w185{[movie.poster_path]}' onerror="this.style.display='none';">
             </div>
-            <div class='col-lg-6'>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
               <h3>{[movie.title]} ({[movie.release_date.substring(0,4)]})</h3>
             </div>
-            <div class='col-lg-1'>
+            <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1'>
               <button class='btn btn-primary' ng-click='search_single({ id: movie.id, title: movie.title }, searchs.search2, searchs)'>Select</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class='col-lg-2' ng-show="searchs.search1.done && searchs.search2.done"></div>
-      <div class='col-lg-8 center-block' ng-show="searchs.search1.done && searchs.search2.done">
-        <h4>Here are the cross people <button ng-click='resetSearchs()' class='btn btn-warning'>Reset Searchs</button></h4>
+      <div class='col-lg-4 col-md-4 col-sm-3 col-xs-3' ng-show="searchs.search1.done && searchs.search2.done"></div>
+      <div class='col-lg-5 col-md-5 col-sm-5 col-xs-5 center-block' ng-show="searchs.search1.done && searchs.search2.done">
+          <div class='result-header'>
+              <h4>Here are the cross people</h4>
+              <button ng-click='resetSearchs()' class='btn btn-warning'>Reset Searchs</button>
+          </div>
           <div ng-repeat='person in searchs.compared'>
-            <h5>
+            <h3>
               {[person.name]}:
-            </h5>
-            <ul>
-              <li ng-repeat='role in person.role'>
-                {[role.job]} - {[role.movie]}
-              </li>
-            </ul>
+          </h3>
+            <div class='resume' ng-repeat='movie in person.role'>
+                <h5>{[movie.movie]}</h5>
+                    <p ng-repeat='role in movie.roles'>
+                        {[role.job]}
+                    </p>
+            </div>
           </div>
       </div>
 

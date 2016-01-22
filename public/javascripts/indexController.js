@@ -106,13 +106,30 @@ indexController.controller('indexCtrl', function($scope, $http){
       filterAR.push(person.name);
 
       return check;
-    })
+  });
 
     compared = results.one.filter(function(person){ return results.two.map(function(Person){ return Person.name; }).indexOf(person.name) !== -1; }).map(function(person){
       person.role2 = results.two[results.two.map(function(Person){ return Person.name; }).indexOf(person.name)].role;
       return person;
     }).map(function(person){
       person.role = person.role.concat(results.two[results.two.map(function(Person){ return Person.name; }).indexOf(person.name)].role);
+      var movieTitles = [];
+      person.role = person.role.map(function(role){ return role.movie; }).filter(function(movie){
+          var check = movieTitles.indexOf(movie) === -1;
+          movieTitles.push(movie);
+
+          return check;
+      }).map(function(movie){
+          var thisMovie = person.role.filter(function(role2){ return role2.movie === movie; }).reduce(function(agg, curr){
+              agg.push(curr);
+              return agg;
+          }, []);
+
+          return {
+              movie: movie,
+              roles: thisMovie
+          };
+      })
       return person;
     });
     return compared;
